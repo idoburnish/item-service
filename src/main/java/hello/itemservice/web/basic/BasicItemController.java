@@ -63,13 +63,29 @@ public class BasicItemController {
 //        return "basic/item";
 //    }
 
-    // @ModelAttribute 이름 생략
-    @PostMapping("/add")
-    public String addItemV3(@ModelAttribute Item item){
+//    // @ModelAttribute 이름 생략
+//    @PostMapping("/add")
+//    public String addItemV3(@ModelAttribute Item item){
+//
+//        // 클래스명 이용해서 Item -> item 으로 자동 생성
+//        itemRepository.save(item);
+//        return "basic/item";
+//    }
 
-        // 클래스명 이용해서 Item -> item 으로 자동 생성
+//    // @ModelAttribute 전체 생략
+//    @PostMapping("/add")
+//    public String addItemV4(Item item){
+//
+//        // 클래스명 이용해서 Item -> item 으로 자동 생성
+//        itemRepository.save(item);
+//        return "basic/item";
+//    }
+
+    // PRG 방식
+    @PostMapping("/add")
+    public String addItemV5(Item item){
         itemRepository.save(item);
-        return "basic/item";
+        return "redirect:/basic/items/" + item.getId();
     }
 
     @GetMapping("/{itemId}/edit")
